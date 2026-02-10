@@ -24,8 +24,8 @@ from server import (
     get_devices,
     get_live_visitors,
     get_search_keywords,
-    compare_sites,
-    list_sites,
+    get_weekly_comparison,
+    get_site_info,
 )
 
 load_dotenv()
@@ -121,14 +121,14 @@ tools = [
         description="Get search keywords that brought visitors. Input: JSON with 'site', 'period', 'limit'"
     ),
     Tool(
-        name="compare_sites",
-        func=lambda x: json.dumps(compare_sites(**json.loads(x)) if x.strip() else compare_sites()),
-        description="Compare all three sites side by side. Input: JSON with 'period'"
+        name="get_weekly_comparison",
+        func=lambda x: json.dumps(get_weekly_comparison(**json.loads(x)) if x.strip() else get_weekly_comparison()),
+        description="Compare this week vs last week. Input: JSON with 'site' (optional)"
     ),
     Tool(
-        name="list_sites",
-        func=lambda x: json.dumps(list_sites()),
-        description="List all available sites being tracked. No input needed."
+        name="get_site_info",
+        func=lambda x: json.dumps(get_site_info()),
+        description="Get information about the tracked site. No input needed."
     ),
 ]
 

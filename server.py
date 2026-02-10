@@ -23,13 +23,8 @@ SITES = {
     "ronaldmego": 4,
     "ronaldmego.com": 4,
     "personal": 4,
-    "galacticaia": 5,
-    "galacticaia.com": 5,
-    "galactica": 5,
-    "empresa": 5,
-    "becgi": 6,
-    "be-cgi": 6,
-    "be-cgi.com": 6,
+    "mi sitio": 4,
+    "my site": 4,
 }
 
 mcp = FastMCP("Matomo Analytics 📊")
@@ -305,46 +300,47 @@ def get_search_keywords(site: str = "ronaldmego", period: str = "month", limit: 
 
 
 @mcp.tool
-def compare_sites(period: str = "today") -> dict:
+def get_weekly_comparison(site: str = "ronaldmego") -> dict:
     """
-    Compare all three sites side by side.
+    Compare this week vs last week for a site.
     
     Args:
-        period: Time period to compare
+        site: Site name (default: ronaldmego)
     
     Returns:
-        Comparison of visits, pageviews, etc. for all sites
+        Comparison of this week vs last week
     """
-    sites_data = []
+    site_id = resolve_site_id(site)
     
-    for name, site_id in [("ronaldmego.com", 4), ("galacticaia.com", 5), ("be-cgi.com", 6)]:
-        params = {"idSite": site_id, **get_period_params(period)}
-        data = matomo_api("VisitsSummary.get", params)
-        
-        sites_data.append({
-            "site": name,
-            "unique_visitors": data.get("nb_uniq_visitors", 0),
-            "visits": data.get("nb_visits", 0),
-            "pageviews": data.get("nb_pageviews", 0),
-            "bounce_rate": data.get("bounce_rate", "0%"),
-        })
+    this_week = matomo_api("VisitsSummary.get", {"idSite": site_id, "period": "week", "date": "today"})
+    last_week = matomo_api("VisitsSummary.get", {"idSite": site_id, "period": "week", "date": "lastWeek"})
     
-    return {"period": period, "comparison": sites_data}
+    return {
+        "site": site,
+        "this_week": {
+            "visitors": this_week.get("nb_uniq_visitors", 0),
+            "pageviews": this_week.get("nb_pageviews", 0),
+        },
+        "last_week": {
+            "visitors": last_week.get("nb_uniq_visitors", 0),
+            "pageviews": last_week.get("nb_pageviews", 0),
+        }
+    }
 
 
 @mcp.tool
-def list_sites() -> list:
+def get_site_info() -> dict:
     """
-    List all available sites being tracked.
+    Get information about the tracked site.
     
     Returns:
-        List of sites with their IDs and URLs
+        Site details
     """
-    return [
-        {"id": 4, "name": "ronaldmego.com", "aliases": ["ronaldmego", "personal"]},
-        {"id": 5, "name": "galacticaia.com", "aliases": ["galacticaia", "galactica", "empresa"]},
-        {"id": 6, "name": "be-cgi.com", "aliases": ["becgi", "be-cgi"]},
-    ]
+    return {
+        "site": "ronaldmego.com",
+        "id": 4,
+        "description": "Personal portfolio and blog"
+    }
 
 
 if __name__ == "__main__":
