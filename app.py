@@ -144,10 +144,7 @@ def get_agent():
     prompt = ChatPromptTemplate.from_messages([
         ("system", """Eres un asistente de analytics que ayuda a entender el rendimiento de sitios web.
         
-Tienes acceso a Matomo Analytics para estos sitios:
-- ronaldmego.com (ID 4) - Sitio personal/portfolio
-- galacticaia.com (ID 5) - Empresa de Data Governance
-- be-cgi.com (ID 6) - Consultoría aliada
+Tienes acceso a Matomo Analytics. El sitio principal es ronaldmego.com.
 
 Cuando el usuario pregunte sobre analytics:
 1. Usa las herramientas disponibles para obtener datos reales
@@ -155,8 +152,8 @@ Cuando el usuario pregunte sobre analytics:
 3. Ofrece insights cuando sea relevante
 4. Responde en español
 
-Para las herramientas, envía los parámetros como JSON. Ejemplo: {{"site": "galacticaia", "period": "today"}}
-Si no se especifica el sitio, usa galacticaia por defecto.
+Para las herramientas, envía los parámetros como JSON. Ejemplo: {{"site": "ronaldmego", "period": "today"}}
+Si no se especifica el sitio, usa ronaldmego por defecto.
 Si no se especifica el período, usa "today" por defecto."""),
         ("placeholder", "{chat_history}"),
         ("human", "{input}"),
@@ -172,8 +169,8 @@ with st.sidebar:
     st.markdown("### 🚀 Quick Stats")
     
     try:
-        # Get today's stats for galacticaia
-        stats = get_visits_summary("galacticaia", "today")
+        # Get today's stats for ronaldmego.com
+        stats = get_visits_summary("ronaldmego", "today")
         
         st.markdown(f"""
         <div class="stat-card">
@@ -202,8 +199,8 @@ with st.sidebar:
     st.markdown("---")
     st.markdown("### 💡 Ejemplos")
     st.markdown("""
-    - "¿Cómo va galacticaia hoy?"
-    - "Compara los 3 sitios esta semana"
+    - "¿Cómo va mi sitio hoy?"
+    - "¿Cuántas visitas tuve esta semana?"
     - "¿De qué países vienen las visitas?"
     - "¿Cuáles son las páginas más vistas?"
     - "¿Hay alguien en el sitio ahora?"

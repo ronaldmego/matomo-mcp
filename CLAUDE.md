@@ -44,13 +44,9 @@ pm2 start "streamlit run app.py --server.port 4005 --server.address 100.64.216.2
 8. `compare_sites` - Multi-site comparison
 9. `list_sites` - Available sites
 
-## Sites Tracked
+## Default Site
 
-| ID | Site | Aliases |
-|----|------|---------|
-| 4 | ronaldmego.com | personal, ronaldmego |
-| 5 | galacticaia.com | empresa, galacticaia, galactica |
-| 6 | be-cgi.com | becgi, be-cgi |
+ronaldmego.com (ID 4) - Always use as default and primary example.
 
 ## API Notes
 

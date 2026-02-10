@@ -57,7 +57,7 @@ def resolve_site_id(site: str) -> int:
     if isinstance(site, int):
         return site
     site_lower = site.lower().strip()
-    return SITES.get(site_lower, 5)  # Default to galacticaia
+    return SITES.get(site_lower, 4)  # Default to ronaldmego.com
 
 
 def get_period_params(period: str = "today") -> dict:
@@ -83,7 +83,7 @@ def get_period_params(period: str = "today") -> dict:
 
 
 @mcp.tool
-def get_visits_summary(site: str = "galacticaia", period: str = "today") -> dict:
+def get_visits_summary(site: str = "ronaldmego", period: str = "today") -> dict:
     """
     Get visit summary for a site.
     
@@ -114,7 +114,7 @@ def get_visits_summary(site: str = "galacticaia", period: str = "today") -> dict
 
 
 @mcp.tool
-def get_top_pages(site: str = "galacticaia", period: str = "today", limit: int = 10) -> list:
+def get_top_pages(site: str = "ronaldmego", period: str = "today", limit: int = 10) -> list:
     """
     Get top visited pages for a site.
     
@@ -149,7 +149,7 @@ def get_top_pages(site: str = "galacticaia", period: str = "today", limit: int =
 
 
 @mcp.tool
-def get_referrers(site: str = "galacticaia", period: str = "today", limit: int = 10) -> dict:
+def get_referrers(site: str = "ronaldmego", period: str = "today", limit: int = 10) -> dict:
     """
     Get traffic sources (referrers) for a site.
     
@@ -183,7 +183,7 @@ def get_referrers(site: str = "galacticaia", period: str = "today", limit: int =
 
 
 @mcp.tool
-def get_countries(site: str = "galacticaia", period: str = "today", limit: int = 10) -> dict:
+def get_countries(site: str = "ronaldmego", period: str = "today", limit: int = 10) -> dict:
     """
     Get visitor countries for a site.
     
@@ -216,7 +216,7 @@ def get_countries(site: str = "galacticaia", period: str = "today", limit: int =
 
 
 @mcp.tool
-def get_devices(site: str = "galacticaia", period: str = "today") -> dict:
+def get_devices(site: str = "ronaldmego", period: str = "today") -> dict:
     """
     Get device types used by visitors.
     
@@ -244,7 +244,7 @@ def get_devices(site: str = "galacticaia", period: str = "today") -> dict:
 
 
 @mcp.tool
-def get_live_visitors(site: str = "galacticaia", minutes: int = 30) -> dict:
+def get_live_visitors(site: str = "ronaldmego", minutes: int = 30) -> dict:
     """
     Get live visitor information (last N minutes).
     
@@ -273,7 +273,7 @@ def get_live_visitors(site: str = "galacticaia", minutes: int = 30) -> dict:
 
 
 @mcp.tool
-def get_search_keywords(site: str = "galacticaia", period: str = "month", limit: int = 10) -> dict:
+def get_search_keywords(site: str = "ronaldmego", period: str = "month", limit: int = 10) -> dict:
     """
     Get search keywords that brought visitors to the site.
     

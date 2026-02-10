@@ -9,8 +9,8 @@ Talk to your website analytics in natural language.
 
 An MCP (Model Context Protocol) server + chat interface that lets you ask questions about your Matomo analytics data naturally:
 
-- "¿Cómo va galacticaia hoy?"
-- "Compara los 3 sitios esta semana"
+- "¿Cómo va mi sitio hoy?"
+- "¿Cuántas visitas tuve esta semana?"
 - "¿De qué países vienen las visitas?"
 - "¿Hay alguien en el sitio ahora?"
 
@@ -86,8 +86,8 @@ MIT - Use freely, just keep the attribution.
 
 ## Author
 
-[GalacticaIA](https://galacticaia.com) - Data Governance + AI
+[Ronald Mego](https://ronaldmego.com) - Data & AI
 
 ---
 
-Made with 🐷 by Pepa-Pig
+Built with FastMCP + LangChain + Gemini
